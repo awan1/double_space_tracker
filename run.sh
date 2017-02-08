@@ -24,12 +24,12 @@ fi
 VENV_DIR="double_space_venv"
 if [ ! -d ${VENV_DIR} ] ; then
   echo "Creating virtualenv in ${VENV_DIR}"
-  virtualenv double_space_venv
+  virtualenv ${VENV_DIR}
 fi
 echo "Activating virtualenv in ${VENV_DIR}"
-source double_space_venv/bin/activate
+source ${VENV_DIR}/bin/activate
 
-# Install requirement
+# Install requirements
 echo "Installing requirements"
 pip install pynput
 
