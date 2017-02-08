@@ -17,8 +17,8 @@ cd $(dirname $0)
 INVENV=$(python -c 'import sys; print ("1" if hasattr(sys, "real_prefix") else "0")')
 if [ ${INVENV} -eq 1 ]; then
   echo "Detected a virtualenv. Deactivating"
-    deactivate
-    fi
+  deactivate
+fi
 
 # Start the virtualenv
 VENV_DIR="double_space_venv"

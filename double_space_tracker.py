@@ -27,9 +27,11 @@ def notify_double_space():
     """
     Utility function to notify if a double space was pressed after a period.
     """
-    os.system("""
-              osascript -e 'display notification "Double space!" with title "KeyTracker"'
-              """)
+    os.system(
+        """
+        osascript -e 'display notification "Double space!" with title "KeyTracker"'
+        """
+    )
 
 
 class LengthTwoQueue(object):
