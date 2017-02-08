@@ -31,7 +31,7 @@ source ${VENV_DIR}/bin/activate
 
 # Install requirements
 echo "Installing requirements"
-pip install pynput
+pip install -r pip_requirements.txt
 
 # Run
 echo

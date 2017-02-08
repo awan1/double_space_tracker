@@ -33,3 +33,20 @@ This will:
 Anything that logs keystrokes deserves scrutiny. Users are encouraged to
 inspect the source code, which is as minimal as possible.
 
+## Debugging / manual runs
+If the script fails because it's missing libraries, you can try to manually
+fix it by installing the right libraries. Either add the missing libraries to
+`pip_requirements.txt` and re-run `run.sh`, or start the virtualenv and run
+the tracker manually:
+
+    # Activate the virtualenv
+    $ source double_space_venv/bin/activate
+
+    # Install whatever packages are missing
+    $ pip install ...
+
+    # Run the tracker with superuser privileges, using the virtualenv python
+    # (just using python will get the superuser version rather than the
+    # virtualenv one)
+    $ sudo double_space_venv/bin/python double_space_tracker.py
+
