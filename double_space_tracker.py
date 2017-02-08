@@ -1,12 +1,13 @@
 """
 This is a background application that will alert a user when they input two
-spaces (instead of one) after a period.
+spaces (instead of one) after a sentence-ending punctuation mark.
 
 It exhibits interesting functionality:
 - Monitoring keyboard inputs on OSX
 - Displaying OSX alerts
 
-Algorithm: if a space is seen after a period and a space, output an alert.
+Algorithm: if a space is seen after a sentence-ending punctuation mark and a
+space, output an alert.
 That's it. Could do more subtle checking of context (e.g. don't want to alert
 when writing code) but I can't think of any contexts where a double space is
 actually desired.
@@ -53,6 +54,9 @@ class ListenerWithCache(Listener):
     """
     An extension of the Listener class that comes with a cache.
     """
+    _sentence_end_punctuation_keys = [
+        KeyCode.from_char(c) for c in ['.', '!', '?', ')']
+    ]
     def __init__(self):
         self.cache = LengthTwoQueue()
         # Run the superclass __init__, passing in *instance methods*.
@@ -64,7 +68,7 @@ class ListenerWithCache(Listener):
     def on_press(self, key):
         if (key == Key.space and
                 self.cache.first == Key.space and
-                self.cache.second == KeyCode.from_char('.')):
+                self.cache.second in self._sentence_end_punctuation_keys):
             notify_double_space()
         self.cache.add(key)
 
